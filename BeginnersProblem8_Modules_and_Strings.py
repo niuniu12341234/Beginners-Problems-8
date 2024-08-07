@@ -1,19 +1,22 @@
 print ("===Guess the Number===")
 import random
-ans = random.randint(1,100)
-count = 1
-n = int(input("Guess a integer from 1 to 100: "))
-while n != ans:
-    if n > 100 or n < 1:
-        print("Invaild input. Please try again.")
-    elif n > ans:
-        print("Your guess was too high.")
-    elif n < ans:
-        print("Your guess was too low.")
-    count += 1
-    n = int(input("Try another one: "))
-print("Well done! The answer is "+str(ans)+". You've tried",count,"times.")
-
+def guess(range=100,round=7):
+    ans = random.randint(1,range)
+    count = 1
+    n = int(input("Guess a integer from 1 to "+str(range)+": "))
+    while n != ans:
+        if count >= round:
+            break
+        if n > 100 or n < 1:
+            print("Invaild input. Please try again.")
+        elif n > ans:
+            print("Your guess was too high.")
+        elif n < ans:
+            print("Your guess was too low.")
+        count += 1
+        n = int(input("Try another one: "))
+    print("Thanks for playing! The answer is "+str(ans)+". You've tried",count,"times.")
+guess()
 print("===Bus Fare===")
 fr = int(input("What number stop are you at?\n>>"))
 to = int(input("What is the stop you want to go to?\n>>"))
